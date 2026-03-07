@@ -1,0 +1,17 @@
+# Leading Brand Technical Documentation
+# All links verified functional on: March 7, 2026
+
+1. Netafim: Drip Irrigation Handbook (Technical Foundations)
+   - Status: Active / PDF Direct Link
+   - URL: https://www.netafim.com.mx/bynder/28DEA0B8-8EF1-4037-9EA133D578881E27-drip-irrigation-system-handbook.pdf
+   - [Last Checked: March 7, 2026]
+
+2. Rain Bird: ARC Series Smart Controller User Manual 
+   - Status: Active / Consumer UI & Wiring Reference
+   - URL: https://www.rainbird.com/media/14949
+   - [Last Checked: March 7, 2026]
+
+3. Rain Bird: IQ4 Central Control Technical Overview
+   - Status: Active / Remote Management Logic
+   - URL: https://www.rainbird.com/products/iq4-platform
+   - [Last Checked: March 7, 2026]

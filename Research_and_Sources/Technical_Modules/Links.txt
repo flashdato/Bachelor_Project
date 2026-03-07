@@ -1,0 +1,17 @@
+# Technical Specs & Protocols
+# All links verified functional on: March 7, 2026
+
+1. LoRaWAN 1.1 Official Specification (LoRa Alliance)
+   - Status: Active / Protocol Standard for STM32/ESP32
+   - URL: https://resources.lora-alliance.org/document/lorawan-specification-v1-1
+   - [Last Checked: March 7, 2026]
+
+2. SDI-12 Communication Standard (v1.4)
+   - Status: Active / Sensor Bus Protocol
+   - URL: http://www.sdi-12.org/specification.php
+   - [Last Checked: March 7, 2026]
+
+3. Rain Bird: Variable Arc Nozzle (VAN) Performance Data
+   - Status: Active / Hydraulic Actuation Math
+   - URL: https://www.rainbird.com/sites/default/files/media/documents/2018-02/ts_VAN_Nozzles.pdf
+   - [Last Checked: March 7, 2026]
