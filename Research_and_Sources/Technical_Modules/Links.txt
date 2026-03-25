@@ -15,3 +15,23 @@
    - Status: Active / Hydraulic Actuation Math
    - URL: https://www.rainbird.com/sites/default/files/media/documents/2018-02/ts_VAN_Nozzles.pdf
    - [Last Checked: March 7, 2026]
+   
+4. STM32F103 Reference Manual (RM0008)
+   - Status: Active / Core Logic & Register Map
+   - URL: https://www.st.com/resource/en/reference_manual/rm0008-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
+   - [Last Checked: March 25, 2026]
+
+5. ESP32 Technical Reference Manual (v5.7)
+   - Status: Active / Wi-Fi & UART Hardware Detail
+   - URL: https://www.espressif.com/sites/default/files/documentation/esp32_technical_reference_manual_en.pdf
+   - [Last Checked: March 25, 2026]
+
+6. STM32CubeIDE v2.1 Release Notes & Docs
+   - Status: Active / Primary IDE Framework
+   - URL: https://wiki.st.com/stm32mpu/wiki/STM32CubeIDE_release_note
+   - [Last Checked: March 25, 2026]
+
+7. Firebase Realtime Database: Android Setup
+   - Status: Active / Cloud Data Sync Logic
+   - URL: https://firebase.google.com/docs/database/android/start
+   - [Last Checked: March 25, 2026]

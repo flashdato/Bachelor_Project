@@ -1,0 +1,52 @@
+# General System Interconnection Overview
+# Verification Date: March 25, 2026
+
+This document provides a high-level functional map of the automated irrigation and fertigation system.
+
+=============================================================================
+1. POWER FLOW (HYBRID ARCHITECTURE)
+=============================================================================
+
+[ SOLAR PANEL ] ---+---> [ CHARGE CONTROLLER ] <---> [ BATTERY STORAGE ]
+                   |
+[ 12V ADAPTER ] ---+
+                   |
+                   +---> [ VOLTAGE REGULATION ] ---> [ 5V/3.3V LOGIC BUS ]
+                   |
+                   +---> [ HIGH POWER BUS ] --------> [ 12V ACTUATORS ]
+
+
+=============================================================================
+2. DATA AND CONTROL LOGIC
+=============================================================================
+
+[ SENSORS ] ----> [ STM32 CONTROLLER ] <---- UART ----> [ ESP32 GATEWAY ]
+(Moisture)        (Logic & Timing)      (Serial)        (Wi-Fi/Cloud)
+                                                               |
+                                                               V
+[ ACTUATORS ] <--- (Control Signals)                    [ MOBILE APP ]
+(Valve/Servo)                                           (User Interface)
+
+
+=============================================================================
+3. COMPONENT FUNCTIONAL ROLES
+=============================================================================
+
+A. SENSORS (INPUT):
+   - Monitor soil moisture levels in real-time.
+   - Send environmental data to the STM32 for processing.
+
+B. STM32 (LOCAL INTELLIGENCE):
+   - Executes watering and fertilization schedules.
+   - Manages the precise timing of the servo-controlled concentration valve.
+   - Maintains operation if the wireless connection is lost.
+
+C. ESP32 (REMOTE BRIDGE):
+   - Synchronizes local data with the cloud server.
+   - Receives remote overrides and schedule updates from the mobile app.
+
+D. ACTUATORS (OUTPUT):
+   - Solenoid Valve: Controls the main water flow (On/Off).
+   - Servo Mechanism: Adjusts the concentration of nutrients for fertigation.
+
+=============================================================================
