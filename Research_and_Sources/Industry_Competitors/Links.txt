@@ -1,17 +1,77 @@
-# Leading Brand Technical Documentation
-# All links verified functional on: March 7, 2026
+# Industry Competitors — Product Documentation & Analysis
+# Last updated: May 2026
+# Coverage: All competitors analyzed in thesis Section 3.2
 
-1. Netafim: Drip Irrigation Handbook (Technical Foundations)
-   - Status: Active / PDF Direct Link
-   - URL: https://www.netafim.com.mx/bynder/28DEA0B8-8EF1-4037-9EA133D578881E27-drip-irrigation-system-handbook.pdf
+=============================================================================
+TIER 1 — ENTERPRISE SYSTEMS
+=============================================================================
+
+1. Rain Bird: IQ4 Central Control System — Product Overview
+   - Tier: Enterprise / Use: Remote management logic, pricing reference ($2,000+)
+   - URL: https://www.rainbird.com/products/iq4-platform
    - [Last Checked: March 7, 2026]
 
-2. Rain Bird: ARC Series Smart Controller User Manual 
-   - Status: Active / Consumer UI & Wiring Reference
+2. Rain Bird: ARC Series Smart Controller — User Manual
+   - Tier: Enterprise / Use: Consumer UI reference, wiring diagrams
    - URL: https://www.rainbird.com/media/14949
    - [Last Checked: March 7, 2026]
 
-3. Rain Bird: IQ4 Central Control Technical Overview
-   - Status: Active / Remote Management Logic
-   - URL: https://www.rainbird.com/products/iq4-platform
+3. Netafim: Drip Irrigation System Handbook (Technical Foundations)
+   - Tier: Enterprise / Use: Drip irrigation principles, nutrigation concept
+   - URL: https://www.netafim.com.mx/bynder/28DEA0B8-8EF1-4037-9EA133D578881E27-drip-irrigation-system-handbook.pdf
    - [Last Checked: March 7, 2026]
+
+4. Netafim: NetBeat Precision Irrigation Platform — Technical Specification
+   - Tier: Enterprise / Use: Cloud-connected irrigation architecture comparison
+   - URL: https://www.netafim.com/en/digital-farming/netbeat/
+   - [Last Checked: May 2026]
+
+5. The Toro Company — Irrigation Division Overview
+   - Tier: Enterprise / Use: Toro's robotics + irrigation convergence (acquired Autonomous Solutions Inc.)
+   - URL: https://www.toro.com/en/commercial/irrigation
+   - [Last Checked: May 2026]
+
+=============================================================================
+TIER 2 — MID-MARKET IoT CONTROLLERS
+=============================================================================
+
+6. Rachio 3 Smart Sprinkler Controller — Product Page & Technical Overview
+   - Tier: Mid-market / Use: Consumer IoT irrigation, weather intelligence, ~$230
+   - URL: https://rachio.com/products/rachio-3/
+   - [Last Checked: May 2026]
+
+7. Galcon — Agricultural & Commercial Controllers Overview
+   - Tier: Mid-market / Use: Israeli IoT irrigation company, residential to light agricultural
+   - URL: https://www.galcon.com/
+   - [Last Checked: May 2026]
+
+8. Hunter Industries: HC-1200C Commercial Controller
+   - Tier: Mid-market / Use: Commercial landscape controller, ~$350, no sensor integration
+   - URL: https://www.hunterindustries.com/irrigation-product/controllers/hc
+   - [Last Checked: May 2026]
+
+=============================================================================
+TIER 3 — OPEN PLATFORM ALTERNATIVES
+=============================================================================
+
+9. OpenSprinkler — Official Product & Documentation
+   - Tier: Open-source / Use: Most prominent open-source irrigation controller, ATmega-based, ~$170
+   - URL: https://opensprinkler.com/
+   - [Last Checked: May 2026]
+
+10. OpenSprinkler: GitHub Repository
+    - Tier: Open-source / Use: Source code reference, feature comparison, community size
+    - URL: https://github.com/OpenSprinkler/OpenSprinkler-Firmware
+    - [Last Checked: May 2026]
+
+=============================================================================
+COMPETITIVE SUMMARY
+=============================================================================
+
+Key finding: No product below $200 offers all three of:
+  (a) TDS / water quality monitoring
+  (b) Automated fertigation with feedback control
+  (c) Remote WiFi/cloud control
+  (d) Open communication protocol
+
+Smart Flow 2.0 is the only system combining all four at ~$70.

@@ -1,17 +1,93 @@
 # Market Analysis & Trends (2026)
-# All links verified functional on: March 7, 2026
+# Last updated: May 2026
+
+=============================================================================
+GLOBAL SMART IRRIGATION MARKET
+=============================================================================
 
 1. Smart Irrigation Global Market Report 2026 (Research and Markets)
-   - Status: Active / .44B Valuation Data
+   - Use: Market valuation data (~$2.44B), CAGR projections
    - URL: https://www.researchandmarkets.com/reports/5766645/smart-irrigation-market-report
    - [Last Checked: March 7, 2026]
 
-2. Global Smart Irrigation Market Size & Forecast (Fortune Business Insights)
-   - Status: Active / Growth Forecasts to 2034
+2. Global Smart Irrigation Market Size & Forecast to 2034 (Fortune Business Insights)
+   - Use: Growth forecasts, regional breakdown (North America dominant), key drivers
    - URL: https://www.fortunebusinessinsights.com/smart-irrigation-market-105193
    - [Last Checked: March 7, 2026]
 
-3. Smart Farming Report: Innovators Guide 2026
-   - Status: Active / Industry Trends
+3. Smart Irrigation Global Market Report (The Business Research Company)
+   - Use: Segment analysis, IoT adoption trends in agriculture
    - URL: https://www.thebusinessresearchcompany.com/report/smart-irrigation-global-market-report
    - [Last Checked: March 7, 2026]
+
+4. Smart Irrigation Market — Global Forecast to 2030 (MarketsandMarkets)
+   - Use: Forecast methodology, geographic segmentation, key players
+   - URL: https://www.marketsandmarkets.com/Market-Reports/smart-irrigation-market-199396604.html
+   - [Last Checked: May 2026]
+
+5. Smart Irrigation Market Size, Share & Trends Analysis (Grand View Research)
+   - Use: Trend analysis, drip irrigation segment growth, precision agriculture convergence
+   - URL: https://www.grandviewresearch.com/industry-analysis/smart-irrigation-market
+   - [Last Checked: May 2026]
+
+=============================================================================
+WATER SCARCITY & AGRICULTURAL WATER USE
+=============================================================================
+
+6. FAO — The State of the World's Land and Water Resources (SOLAW 2011)
+   - Use: Global agricultural water use statistics, efficiency benchmarks
+   - URL: https://www.fao.org/publications/solaw/en/
+   - [Last Checked: May 2026]
+
+7. FAO — Coping with Water Scarcity: Action Framework for Agriculture (2012)
+   - Use: Policy framework, water scarcity definitions, 50% water waste statistic
+   - URL: https://www.fao.org/3/i3015e/i3015e.pdf
+   - [Last Checked: May 2026]
+
+8. FAO — Irrigation and Drainage Paper No. 66: Crop Yield Response to Water
+   - Use: Drip irrigation water savings data (20–50% vs. flood), yield impact
+   - URL: https://www.fao.org/3/i2800e/i2800e.pdf
+   - [Last Checked: May 2026]
+
+9. World Bank — Water in Agriculture (Overview)
+   - Use: Global context — agriculture uses 70% of all freshwater withdrawals
+   - URL: https://www.worldbank.org/en/topic/water-in-agriculture
+   - [Last Checked: May 2026]
+
+=============================================================================
+GEORGIAN AGRICULTURE & LOCAL MARKET CONTEXT
+=============================================================================
+
+10. Geostat — Agriculture of Georgia: Statistical Publication 2023
+    - Use: Georgian farmland statistics, crop production data, land fragmentation
+    - URL: https://www.geostat.ge/en/modules/categories/23/agriculture
+    - [Last Checked: May 2026]
+
+11. Georgian National Environmental Agency — Water Resource Management Report 2022
+    - Use: Kakheti rainfall distribution (600–700mm/year), irrigation infrastructure state
+    - URL: https://www.nea.gov.ge/En/Reports
+    - [Last Checked: May 2026]
+
+12. EU ENPARD Georgia — Programme Overview (European Neighbourhood Programme)
+    - Use: EU co-financing of Georgian agricultural modernization, policy alignment context
+    - URL: https://enpard.ge/en/
+    - [Last Checked: May 2026]
+
+13. Agricultural Projects Management Agency (APMA) of Georgia — 2021 Irrigation Survey
+    - Use: 8% adoption rate of pressurized irrigation among surveyed farmers, barrier analysis
+    - URL: https://apma.ge/en
+    - [Last Checked: May 2026]
+
+=============================================================================
+PRECISION AGRICULTURE & IOT IN FARMING
+=============================================================================
+
+14. McKinsey & Company — Agriculture's Connected Future: How Technology Can Yield New Growth
+    - Use: IoT adoption economics in farming, ROI case studies
+    - URL: https://www.mckinsey.com/industries/agriculture/our-insights/agricultures-connected-future
+    - [Last Checked: May 2026]
+
+15. Beecham Research — Smart Farming and the IoT (Industry Report)
+    - Use: IoT sensor deployment in agriculture trends, connectivity requirements
+    - URL: https://www.beechamresearch.com/article.aspx?id=4
+    - [Last Checked: May 2026]

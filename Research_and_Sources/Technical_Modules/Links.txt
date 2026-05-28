@@ -1,37 +1,140 @@
-# Technical Specs & Protocols
-# All links verified functional on: March 7, 2026
+# Technical Specifications & Reference Documentation
+# Last updated: May 2026
+# Coverage: All components, protocols, and tools used in Smart Flow 2.0
 
-1. LoRaWAN 1.1 Official Specification (LoRa Alliance)
-   - Status: Active / Protocol Standard for STM32/ESP32
-   - URL: https://resources.lora-alliance.org/document/lorawan-specification-v1-1
-   - [Last Checked: March 7, 2026]
+=============================================================================
+MICROCONTROLLERS
+=============================================================================
 
-2. SDI-12 Communication Standard (v1.4)
-   - Status: Active / Sensor Bus Protocol
-   - URL: http://www.sdi-12.org/specification.php
-   - [Last Checked: March 7, 2026]
-
-3. Rain Bird: Variable Arc Nozzle (VAN) Performance Data
-   - Status: Active / Hydraulic Actuation Math
-   - URL: https://www.rainbird.com/sites/default/files/media/documents/2018-02/ts_VAN_Nozzles.pdf
-   - [Last Checked: March 7, 2026]
-   
-4. STM32F103 Reference Manual (RM0008)
-   - Status: Active / Core Logic & Register Map
+1. STM32F103C8T6 Reference Manual (RM0008 Rev 20)
+   - Use: Core register map, ADC, UART, TIM2 configuration
    - URL: https://www.st.com/resource/en/reference_manual/rm0008-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
    - [Last Checked: March 25, 2026]
 
-5. ESP32 Technical Reference Manual (v5.7)
-   - Status: Active / Wi-Fi & UART Hardware Detail
+2. STM32F103C8T6 Datasheet
+   - Use: Electrical characteristics, pin definitions, clock specifications
+   - URL: https://www.st.com/resource/en/datasheet/stm32f103c8.pdf
+   - [Last Checked: May 2026]
+
+3. STM32Cube HAL and Low-Layer Drivers User Manual (UM1850)
+   - Use: HAL_UART_Receive_IT, HAL_ADC_Start, HAL_TIM configuration APIs
+   - URL: https://www.st.com/resource/en/user_manual/um1850-description-of-stm32f1-hal-and-lowlayer-drivers-stmicroelectronics.pdf
+   - [Last Checked: May 2026]
+
+4. ESP32-WROOM-32 Technical Reference Manual (v5.7)
+   - Use: WiFi hardware detail, UART2 (GPIO16/17), FreeRTOS task API
    - URL: https://www.espressif.com/sites/default/files/documentation/esp32_technical_reference_manual_en.pdf
    - [Last Checked: March 25, 2026]
 
-6. STM32CubeIDE v2.1 Release Notes & Docs
-   - Status: Active / Primary IDE Framework
-   - URL: https://wiki.st.com/stm32mpu/wiki/STM32CubeIDE_release_note
+5. ESP32-WROOM-32 Datasheet
+   - Use: Module pinout, RF specifications, power consumption
+   - URL: https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_datasheet_en.pdf
+   - [Last Checked: May 2026]
+
+=============================================================================
+DEVELOPMENT ENVIRONMENT
+=============================================================================
+
+6. STM32CubeIDE — IDE & Toolchain Documentation
+   - Use: Eclipse-based IDE, ARM GCC toolchain, HAL code generation via CubeMX
+   - URL: https://www.st.com/en/development-tools/stm32cubeide.html
    - [Last Checked: March 25, 2026]
 
-7. Firebase Realtime Database: Android Setup
-   - Status: Active / Cloud Data Sync Logic
-   - URL: https://firebase.google.com/docs/database/android/start
-   - [Last Checked: March 25, 2026]
+7. Arduino ESP32 Core — Installation & API Reference
+   - Use: ESP32 Arduino framework, Serial2, WiFi, FreeRTOS task APIs
+   - URL: https://docs.espressif.com/projects/arduino-esp32/en/latest/
+   - [Last Checked: May 2026]
+
+=============================================================================
+COMMUNICATION PROTOCOLS
+=============================================================================
+
+8. MQTT Version 3.1.1 — OASIS Standard
+   - Use: Publish-subscribe protocol spec, QoS levels, broker architecture
+   - URL: https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.html
+   - [Last Checked: May 2026]
+
+9. PubSubClient — Arduino MQTT Library (Nick O'Leary)
+   - Use: MQTT client implementation for ESP32 Arduino framework
+   - URL: https://github.com/knolleary/pubsubclient
+   - [Last Checked: May 2026]
+
+10. ArduinoJson — JSON Library for Arduino/ESP32
+    - Use: JSON serialization/deserialization for MQTT payloads
+    - URL: https://arduinojson.org/
+    - [Last Checked: May 2026]
+
+=============================================================================
+SENSORS
+=============================================================================
+
+11. TDS/EC Sensor Probe — Analog Signal Board (DFRobot TDS Sensor)
+    - Use: ADC voltage-to-TDS cubic polynomial formula, temperature compensation
+    - URL: https://wiki.dfrobot.com/Gravity__Analog_TDS_Sensor___Meter_For_Arduino_SKU__SEN0244
+    - [Last Checked: May 2026]
+
+12. Analog pH Sensor / Meter Kit (DFRobot)
+    - Use: pH electrode signal conditioning, Nernst equation calibration, two-point procedure
+    - URL: https://wiki.dfrobot.com/PH_meter_V1.1_SKU__SEN0161
+    - [Last Checked: May 2026]
+
+13. Pressure Transducer 0–10 bar (0.5–4.5V Analog Output)
+    - Use: Linear transfer function, ADC conversion formula, two-point verification
+    - URL: https://www.aliexpress.com/item/pressure-transducer-0-10bar.html
+    - [Last Checked: May 2026 / Generic component — verify against specific unit purchased]
+
+=============================================================================
+ACTUATORS
+=============================================================================
+
+14. 28BYJ-48 Stepper Motor + ULN2003 Driver — Datasheet
+    - Use: Step resolution (64 steps/rev × 64:1 gear = 4096 steps/rev), coil wiring
+    - URL: https://components101.com/motors/28byj-48-stepper-motor
+    - [Last Checked: May 2026]
+
+15. 12V Solenoid Valve (¾" BSP, NC) — Generic Datasheet
+    - Use: Coil current draw (~300–500mA @ 12V), response time, IP rating
+    - URL: https://www.aliexpress.com/item/12v-solenoid-valve-34-bsp.html
+    - [Last Checked: May 2026 / Generic component — verify against specific unit purchased]
+
+=============================================================================
+POWER COMPONENTS
+=============================================================================
+
+16. LM2596 Simple Switcher Power Converter — Datasheet (Texas Instruments)
+    - Use: Buck converter design, output current (3A), efficiency curves
+    - URL: https://www.ti.com/lit/ds/symlink/lm2596.pdf
+    - [Last Checked: May 2026]
+
+17. MAX485 RS-485/RS-422 Transceiver — Datasheet (Maxim Integrated)
+    - Use: Future RS-485 upgrade path for long-distance Sensor–Relay communication
+    - URL: https://www.analog.com/media/en/technical-documentation/data-sheets/MAX1487-MAX491.pdf
+    - [Last Checked: May 2026]
+
+=============================================================================
+CLOUD & BACKEND
+=============================================================================
+
+18. HiveMQ Cloud — Free Tier MQTT Broker
+    - Use: Managed MQTT broker used for prototype deployment, TLS port 8883
+    - URL: https://www.hivemq.com/mqtt-cloud-broker/
+    - [Last Checked: May 2026]
+
+19. Firebase Realtime Database — Android/Flutter Setup Guide
+    - Use: Cloud data sync for mobile app (alternative to raw MQTT)
+    - URL: https://firebase.google.com/docs/database/android/start
+    - [Last Checked: March 25, 2026]
+
+=============================================================================
+IRRIGATION SCIENCE
+=============================================================================
+
+20. FAO Irrigation and Drainage Paper No. 66 — Crop Yield Response to Water
+    - Use: Drip irrigation efficiency data, water savings percentages, fertigation benefits
+    - URL: https://www.fao.org/3/i2800e/i2800e.pdf
+    - [Last Checked: May 2026]
+
+21. Jones, J. B. (2014) — Complete Guide for Growing Plants Hydroponically (CRC Press)
+    - Use: TDS targets by crop type, pH optimal ranges, nutrient solution science
+    - URL: https://www.routledge.com/Complete-Guide-for-Growing-Plants-Hydroponically/Jones/p/book/9781466584679
+    - [Last Checked: May 2026]
