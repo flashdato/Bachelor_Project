@@ -2,9 +2,20 @@
 ## Automated and Remotely Controlled Irrigation System
 
 **Author:** Davit Kavelashvili  
+**Institution:** Kutaisi International University (KIU)  
 **Type:** Bachelor's Thesis Project  
 **Started:** March 7, 2026  
-**Total BOM Cost:** ~$70 USD (4-zone installation)
+**Status:** ✅ Thesis submitted | ✅ Hardware tested | 🔄 ESP32 firmware pending
+
+---
+
+## 📄 Download Thesis
+
+| Version | File | Date |
+|---------|------|------|
+| **Final (submitted)** | [Bachelor_Project.docx](Manual_Uploads/Bachelor_Project.docx) | June 2026 |
+| Previous draft | [Bachelor_Project_28.06.2026.docx](Manual_Uploads/Bachelor_Project_28.06.2026.docx) | May 2026 |
+| First draft | [Bachelor_Project_07.03.2026.docx](Manual_Uploads/Bachelor_Project_07.03.2026.docx) | March 2026 |
 
 ---
 
@@ -12,31 +23,22 @@
 
 Smart Flow 2.0 is a modular, low-cost, dual-processor automated irrigation and fertigation system designed for small-to-medium agricultural operations. It addresses the gap between cheap fixed-schedule irrigation timers and expensive commercial smart irrigation platforms costing $500–$2,000+.
 
-The system combines real-time water quality monitoring (TDS, pH, pressure), automated multi-zone valve control, and remote access over WiFi/MQTT — all built from commodity hardware for approximately $70 in components.
+The system combines real-time water quality monitoring (TDS, pH), automated multi-zone valve control, and closed-loop fertilizer dosing via a stepper-driven mixing valve — all built from commodity hardware for approximately **$52 in electronics**.
 
 ---
 
-## Repository Structure
+## What Works (Tested)
 
-```
-Bachelor_Project/
-├── Hardware/
-│   ├── Schematics/          ← Pinouts, wiring diagrams, system architecture
-│   ├── BOM.md               ← Full bill of materials with costs
-│   └── Power_System.md      ← Power architecture (solar/grid hybrid)
-├── Firmware/
-│   ├── Sensor_Module/       ← STM32 Sensor Module firmware documentation
-│   ├── Relay_Module/        ← STM32 Relay Module firmware documentation
-│   └── ESP32/               ← ESP32 cloud bridge firmware (design + implementation)
-├── Protocol/
-│   └── README.md            ← Full inter-module communication protocol reference
-├── Research_and_Sources/
-│   ├── Market_Analysis/     ← Global smart irrigation market reports
-│   ├── Industry_Competitors/← Netafim, Rain Bird, Rachio documentation
-│   └── Technical_Modules/  ← Datasheets, protocol standards, IDE references
-├── Media/                   ← Prototype photos and video demonstrations
-└── Manual_Uploads/          ← Periodic Google Docs snapshots
-```
+| Subsystem | Status |
+|-----------|--------|
+| TDS sensor reading (30-sample rolling average) | ✅ Tested — within 5% at <700 ppm |
+| 4-zone solenoid valve control | ✅ Tested — 20 activation cycles, no cross-activation |
+| 13-state irrigation sequence state machine | ✅ Tested — 3 full cycles completed |
+| Stepper motor TDS feedback loop | ✅ Tested — responds to threshold triggers |
+| Sensor ↔ Relay UART communication | ✅ Tested — 24-hour continuous run, zero errors |
+| pH sensor (ADC + buffer) | ⚠️ Hardware wired, calibration offset not finalized |
+| ESP32 cloud bridge | 🔄 Architecture designed, firmware not yet written |
+| Mobile app ↔ hardware end-to-end | 🔄 App built; pending ESP32 implementation |
 
 ---
 
@@ -50,55 +52,112 @@ Smart Flow 2.0 uses a **dual-STM32 + ESP32** architecture split across three phy
                         UART1 (USART1)
                            │
                            ▼
-                   [Relay Module STM32] ──GPIO──► [Relay Board] ──► [Pumps / Valves]
+                   [Relay Module STM32] ──GPIO──► [Relay Board] ──► [Pumps / Valves / Stepper]
 ```
 
 | Module | MCU | Clock | Role |
 |--------|-----|-------|------|
-| Sensor Module | STM32F103C8T6 | 72 MHz (HSE) | Sensor acquisition, irrigation sequencing, command processing |
+| Sensor Module | STM32F103C8T6 | 72 MHz (HSE + PLL×9) | Sensor acquisition, irrigation sequencing, command processing |
 | Relay Module | STM32F103C8T6 | 8 MHz (HSI) | Relay switching, stepper motor control |
-| WiFi Gateway | ESP32-WROOM-32 | 240 MHz | WiFi, MQTT broker bridge, NTP sync |
+| WiFi Gateway | ESP32-WROOM-32 | 240 MHz dual-core | WiFi, MQTT bridge, NTP time sync |
 
-**Why two STM32s?** Running 11 relay control wires from a central controller to valves spread across a field is impractical. A two-wire UART cable between modules allows the Relay Module to be physically co-located with the actuators while the Sensor Module stays near the sensors and water manifold.
+**Why two STM32s?** Running ADC conversions continuously on the same board that switches relay coils introduces electrical noise on the power and ground planes that corrupts analog readings. Separating the analog sensing side from the relay switching side — and connecting them over a clean serial link — is standard practice in industrial instrumentation. It also means each board does exactly one thing.
 
 ---
 
 ## Key Features
 
-- **Multi-zone irrigation** — up to 7 solenoid valve zones (11 relay channels total)
-- **Real-time water quality** — TDS (nutrient concentration) and pH monitoring with 30-sample rolling average filter
-- **Automated fertigation** — stepper motor-controlled mixing valve with TDS feedback loop
-- **Remote control** — WiFi/MQTT with JSON command interface
-- **Off-grid capable** — solar panel + battery power architecture
-- **Open protocol** — all inter-module communication uses human-readable ASCII over standard UART
+- **Multi-zone irrigation** — 4 active solenoid valve zones (11 relay channels total, 7 firmware-enabled)
+- **Real-time water quality** — TDS (nutrient concentration) monitoring with 30-sample rolling average filter
+- **Closed-loop fertigation** — stepper motor-controlled mixing valve adjusts fertilizer concentration automatically based on live TDS readings
+- **Remote control** — WiFi/MQTT with JSON command interface (designed; implementation pending)
 - **Autonomous fallback** — all irrigation logic runs locally on STM32; WiFi loss does not interrupt active sequences
+- **Open protocol** — all inter-module communication uses human-readable ASCII over standard UART; debuggable with any serial terminal at 9600 baud
+- **Fail-safe power-on** — all GPIO outputs initialize LOW; pump and valves are de-energized on reset or power loss
 
 ---
 
 ## Competitive Position
 
-| Product | Price | Zones | TDS/pH Monitoring | Fertigation | Open Protocol |
-|---------|-------|-------|-------------------|-------------|---------------|
-| Rain Bird IQ4 | ~$2,000+ | Up to 48 | No | No | No |
-| Rachio 3 | ~$230 | 8–16 | No | No | No |
-| OpenSprinkler | ~$170 | Up to 72 | No | No | Yes |
-| **Smart Flow 2.0** | **~$70** | **7** | **Yes** | **Yes** | **Yes** |
+| Product | Price | Zones | TDS/pH Monitoring | Closed-loop Fertigation |
+|---------|-------|-------|-------------------|------------------------|
+| Rain Bird IQ4 | ~$2,000+ | Up to 48 | No | No |
+| Rachio 3 | ~$230 | 8–16 | No | No |
+| OpenSprinkler | ~$170 | Up to 72 | No | No |
+| **Smart Flow 2.0** | **~$52** | **4–7** | **Yes (TDS active, pH HW-ready)** | **Yes** |
+
+> No product under $200 from any established manufacturer combines TDS monitoring with closed-loop fertigation and remote WiFi control. Smart Flow 2.0 is the only system on this list that does all three.
 
 ---
 
-## Live Documentation
+## Component Cost (Electronics Only)
 
-The full thesis document is maintained separately:  
-📄 [Google Docs — Live Document](https://docs.google.com/document/d/1qkrIf-M12A-TOWwefRMs7QSAykDUy9xsk56rvhWRvOg/edit?usp=sharing)
+| Component | Qty | Unit | Total |
+|-----------|-----|------|-------|
+| STM32F103C8T6 "Blue Pill" | 2 | $2.00 | $4.00 |
+| ESP32-WROOM-32 | 1 | $4.00 | $4.00 |
+| 12-channel relay board (5V) | 1 | $6.00 | $6.00 |
+| DFRobot TDS sensor (SEN0244) | 1 | $7.00 | $7.00 |
+| Analog pH sensor (SEN0161) | 1 | $9.00 | $9.00 |
+| LM2596 buck converter | 1 | $1.50 | $1.50 |
+| 28BYJ-48 stepper + ULN2003 | 1 | $2.50 | $2.50 |
+| 12V solenoid valves (¾" NC) | 4 | $3.50 | $14.00 |
+| 12V water pump | 1 | $4.00 | $4.00 |
+| **Total** | | | **$52.00 (~143 GEL)** |
 
-Periodic snapshots are archived in `/Manual_Uploads/`.
+Pipe, fittings, and wiring are excluded — these vary with the size of the irrigated area and are treated as site infrastructure, not controller cost.
+
+---
+
+## Repository Structure
+
+```
+Bachelor_Project/
+├── Hardware/
+│   ├── Schematics/
+│   │   ├── System_Architecture.md     ← 4-layer system model, data flow, power architecture
+│   │   ├── Sensor_Module_Pinout.md    ← Pin assignments, ADC config, UART protocol tables
+│   │   └── Relay_Module_Pinout.md     ← Pin-to-relay mapping, stepper motor control
+│   ├── BOM.md                         ← Full bill of materials with costs and sourcing
+│   └── Power_System.md                ← Power architecture, battery sizing, wiring specs
+├── Firmware/
+│   ├── README.md                      ← Firmware overview, dev environment, known issues
+│   ├── Sensor_Module/
+│   │   ├── README.md                  ← Architecture, ADC pipeline, FSM, ISR logic
+│   │   └── Source_Code/main.c         ← Full STM32 Sensor Module firmware
+│   ├── Relay_Module/
+│   │   ├── README.md                  ← Command decoder, stepper logic, startup behavior
+│   │   └── Source_Code/main.c         ← Full STM32 Relay Module firmware
+│   └── ESP32/
+│       └── README.md                  ← FreeRTOS 3-task architecture design (not yet implemented)
+├── Protocol/
+│   └── README.md                      ← Complete inter-module communication reference
+├── Research_and_Sources/
+│   ├── Market_Analysis/Links.txt      ← Smart irrigation market reports and data sources
+│   ├── Industry_Competitors/Links.txt ← Competitor product documentation
+│   └── Technical_Modules/Links.txt    ← Component datasheets, protocol specs, IDE references
+├── Media/                             ← Prototype photos and video demonstrations
+└── Manual_Uploads/                    ← Thesis document versions
+    └── README.md
+```
+
+---
+
+## Future Work
+
+- [ ] Implement ESP32 firmware (WiFi Manager + MQTT Bridge + STM32 Serial Task — architecture in `Firmware/ESP32/README.md`)
+- [ ] Complete pH probe calibration (two-point: pH 4.01 and pH 6.86 buffers)
+- [ ] Wire pressure sensor readings into irrigation control logic (currently calculated but unused)
+- [ ] Field deployment and crop validation (bench-tested only)
+- [ ] iOS support for the mobile application (Android only currently)
 
 ---
 
 ## Quick Links
 
-- [Hardware Pinouts & Schematics](Hardware/Schematics/)
+- [📥 Download Final Thesis](Manual_Uploads/Bachelor_Project.docx)
+- [Hardware Pinouts](Hardware/Schematics/)
 - [Bill of Materials](Hardware/BOM.md)
 - [Firmware Overview](Firmware/README.md)
 - [Communication Protocol Reference](Protocol/README.md)
-- [Sensor Calibration Procedures](Hardware/Schematics/Sensor_Calibration.md)
+- [Power System Design](Hardware/Power_System.md)
