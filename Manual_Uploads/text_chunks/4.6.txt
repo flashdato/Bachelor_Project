@@ -1,0 +1,11 @@
+The fertilizer subsystem in Smart Flow 2.0 does not use a fixed-time pump injection approach. Instead, it uses a stepper-driven flow control valve on the fertilizer inlet line combined with a continuously running fertilizer pump (relay 02). The stepper valve position determines how much fertilizer enters the water stream, and the position is adjusted automatically in real time based on live TDS readings.
+
+During each zone's watering period (states 3, 6, 9, 12 of the irrigation sequence), the Sensor Module TIM2 callback evaluates the current tdsValue on every tick:
+
+The intervalT counter prevents continuous stepping — each adjustment waits 2 seconds before the next one. The stepper position is bounded between 0 (fully closed) and 90 steps (fully open) on the Relay Module side.
+
+The TDS target range (1.0–1.3 in the firmware defaults) can be overridden by sending an "E" command from the mobile application, which sets tdsValue_User. The control band can therefore be adjusted remotely without reflashing firmware.
+
+This closed-loop approach is more robust than timed injection: if TDS rises above the upper threshold for any reason — concentrated fertilizer, sensor drift, or a manual override — the system responds by closing the valve, not by continuing to dose on a fixed schedule.
+
+The subsystem was tested by verifying stepper response to TDS threshold crossing. Field validation of actual fertilizer dosing accuracy on crops was not performed.

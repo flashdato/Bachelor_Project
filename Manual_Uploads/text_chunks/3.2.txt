@@ -1,0 +1,3 @@
+The electronics run from a 5V DC supply. The ESP32 and both STM32 boards have onboard 3.3V regulators. The relay driver board operates at 5V with optocoupler isolation between the microcontroller GPIO outputs and the relay coil drivers. Solenoid valves and the main pump run from a separate 12V rail, which keeps the high-current switching circuits isolated from the control electronics.
+
+No battery backup or low-power sleep mode was implemented in the prototype. The system is assumed to be permanently powered at its installation point.

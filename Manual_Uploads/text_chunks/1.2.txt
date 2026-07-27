@@ -1,0 +1,15 @@
+Before starting the project, I had defined six essential parts that needed to be successfully implemented to conclude that the project was working.
+
+The first was monitoring water quality. The system had to measure TDS and pH levels in irrigation water continuously and in real-time, not as a one-time reading, but as a constant stream of data. Without this, fertilizer control was impossible.
+
+The second component was multi-zone valve control. Solenoid valves were needed to give individual control of at least four independent irrigation zones. Most devices on the market lack segmented irrigation for low-pressure water irrigation.
+
+Third was remote control through a mobile application. Users had to be able to start, stop, monitor, and configure the system from a phone over Wi-Fi. Without a phone app, there was no real benefit to using it over a simple timer. However, for rural regions where people are not tech-savvy, a simple call to turn on a pre-defined process was enough.
+
+The fourth was an automated irrigation program. The system needed to complete a full cycle, open zones sequentially, deal with timing, switch zones, all without manual interaction. At all times, the system had to know sensor data and take emergency decisions by itself to prevent water losses or damage to the crops.
+
+The fifth was closed-loop fertilizer dosing. Fertilizer concentration had to be adjusted automatically according to live TDS readings, not a fixed timer. This was the technically difficult part because it is relatively new and innovative technology.
+
+The sixth was price. The total cost of building it, including all electronics, valves, and sensors, had to be under 200 GEL. Keeping the cost low meant that this product would be acceptable for most users in Georgia.
+
+The prototype satisfied all six goals. More or less, everything is working, but of course, we will go into details of each part. Every part had its ups and downs.

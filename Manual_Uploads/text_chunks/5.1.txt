@@ -1,0 +1,5 @@
+All testing was conducted on a bench setup in an indoor environment. The TDS and pH sensors were immersed in containers of water with known properties. The solenoid valves were connected to a short section of PVC pipe with a controlled water supply. The two STM32 boards communicated over their UART connections; the ESP32 firmware was not yet complete at test time, so inter-module UART communication was tested directly using a USB-to-serial adapter on USART3 of the Sensor Module.
+
+Tests covered:
+
+- TDS sensor reading accuracy against reference solutions. - pH sensor wiring and buffer collection (conversion not active in current firmware). - UART command transmission and relay response between Sensor Module and Relay Module. - Zone switching and relay isolation. - Irrigation sequence execution across all states. - Stepper motor response to TDS threshold triggers.

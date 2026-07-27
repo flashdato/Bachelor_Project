@@ -1,0 +1,5 @@
+TDS accuracy was tested against four reference solutions with known conductivity: 0 ppm (distilled water), 300 ppm, 700 ppm, and 1000 ppm.
+
+At concentrations below 700 ppm, readings were within 5 percent of the reference. At 1000 ppm, deviation increased to approximately 8 percent, consistent with nonlinear probe response at higher concentrations. For the use case — detecting whether TDS is inside or outside a configured band — this accuracy is sufficient.
+
+The pH sensor wiring and ADC readings were confirmed functional. The 10-sample buffer populates correctly and the middle-6 average produces a stable raw value. The conversion to pH units requires a calibration offset specific to the probe used; this step was not completed before testing concluded. The firmware value is fixed at 7.0 for this reason.

@@ -1,0 +1,11 @@
+Smart Flow 2.0 works - that is the short version.
+
+The Sensor Module continuously reads TDS, runs a four-zone irrigation sequence, and adjusts fertilizer concentration in real-time via a stepper valve controlled by live TDS data. The Relay Module decodes ASCII commands from local user input and drives solenoid valves, pumps, and the stepper motor reliably. Long runs of between-module communication via UART were tested without errors.
+
+What is not yet complete is the ESP32 gateway firmware and the end-to-end connection between hardware and mobile application needs final improvements. The architecture for both is designed and documented, but not fully implemented. The hardware layer works, which is a much harder and time-consuming task.
+
+The total cost came in at $50-$70 USD, or approximately 200 GEL. Commercial systems with comparable functionality start at several times that price, excluding sensors and valves. Therefore, for real use cases, a double amount will be totally enough to take control of any area of farmland in Georgia.
+
+Future work includes:
+
+- Implementing ESP32 firmware (MQTT bridge + STM32 polling, FreeRTOS architecture) - Completing pH calibration for the installed probe. - Adding pressure readings to the control logic for leak and blockage detection. - Field deployment and crop validation.

@@ -1,0 +1,13 @@
+The mobile application went through two phases. The first version was built with MIT App Inventor. This was done early in development to verify that the Firebase data structure was working correctly before committing to a full React Native implementation. The App Inventor prototype confirmed that sensor data was flowing correctly and that commands written to the database were being picked up on the hardware side.
+
+The production application is built in React Native and targets Android. It connects to Firebase Realtime Database [14] and provides the following screens:
+
+Dashboard — live TDS and pH readings, current zone status, connection indicator.
+
+Zone Control — buttons for each irrigation zone. Tapping a zone sends the corresponding relay command through Firebase to the ESP32, which forwards it to the Sensor Module.
+
+Scheduling — per-zone duration configuration. The values set here correspond to interval1–interval4 in the Sensor Module firmware, sent as S1–S4 commands.
+
+Weather — current conditions and a 24-hour forecast with watering recommendations.
+
+Settings — TDS target configuration (maps to the "E" command), notification preferences, connection settings.

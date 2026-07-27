@@ -1,0 +1,5 @@
+The Relay Module decodes 3-digit ASCII commands received over USART3 and sets GPIO outputs accordingly. The mapping between command codes and GPIO pins is:
+
+Commands 003/103, 004/104, 009/109, 010/110, and 011/111 are defined in the Sensor Module sequence logic but are commented out in the Relay Module at this stage. The four active zone valves (relay 05–08) cover the solenoids installed in the prototype.
+
+The stepper motor uses a simple step pulse: the direction pin is set, a 100 ms delay is applied, and the pin is cleared. Position is tracked in a variable (0 to 90) and clamped at both ends.

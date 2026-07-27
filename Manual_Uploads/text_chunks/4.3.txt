@@ -1,0 +1,15 @@
+The ESP32 firmware was in the design phase at the time of testing. The architecture is documented in the project repository and describes a three-task FreeRTOS system [10], [11].
+
+Task 1 — WiFi Manager: connects to the configured access point, retries on failure with exponential backoff (1 s, 2 s, 4 s up to 60 s), and syncs system time via NTP after a successful connection.
+
+Task 2 — MQTT Bridge: connects to the HiveMQ Cloud MQTT broker over TLS port 8883, subscribes to the command topic, and on each incoming message translates the JSON payload to the corresponding STM32 ASCII command and sends it over Serial2. It also publishes device status on connect and disconnect.
+
+Task 3 — STM32 Serial Task: every 10 seconds sends "999\r\n" over Serial2 to the Sensor Module, reads the ASCII response, parses the TDS and pH fields, packages them into a JSON payload, and publishes to the sensor data topic on the MQTT broker.
+
+Serial2 is configured on GPIO16 (RX) and GPIO17 (TX) at 9600 baud to match both STM32 UART configurations.
+
+The JSON-to-STM32 command mapping used by the MQTT bridge:
+
+The sensor data response from the STM32 ("999" command) is published as JSON:
+
+Published to: smartflow/sf2_001/sensors

@@ -1,0 +1,9 @@
+Chapter 2 reviews commercial smart irrigation products on the market. analyzing their functionality and pricing according to regions.  this research will establish a baseline for comparison our smart flow module to real competitors.
+
+Chapter 3 describes the overall system architecture. Chapter 3 describes the overall system architecture, including hardware choices of microcontrollers, their placement, and connection logic, as well as sensors, their connections, and communication protocols, power supplies for solenoids and controllers, and remote communication design from the application.
+
+Chapter 4 covers the implementation of each subsystem: sensor module, relay module, ESP32 gateway design, mobile application, weather engine, and fertilizer control. This is done in depth, with accompanying codes and code logics.
+
+Chapter 5 presents test results, a cost breakdown, and a discussion of what worked and what didn't, concluding the several-month project.Conclusion of the several month intense project,
+
+At last, a reference list and appendices containing firmware code listings follow.

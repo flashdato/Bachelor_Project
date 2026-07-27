@@ -1,0 +1,3 @@
+Each of the four active solenoid zones (relay 05–08) was activated and deactivated 20 times in sequence. No cross-activation occurred. Each relay channel responded only to its specific command code.
+
+The full irrigation sequence (states 1–13) was executed three times. Zone transitions completed correctly at each stage. The fertilizer pump (relay 02) activated and deactivated at the correct points in the sequence. Stepper movement in response to TDS threshold triggers was confirmed: when a test solution with TDS above 1.3 was used, the Relay Module received and executed "M0" commands at 2-second intervals until the stepper reached the position limit.

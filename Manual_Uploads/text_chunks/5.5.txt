@@ -1,0 +1,9 @@
+Component costs were recorded at time of purchase. All prices are in USD equivalent; GEL values reflect the exchange rate at the time of purchase.
+
+Core electronics (both STM32 boards, ESP32, relay board, TDS sensor, pH sensor, power regulator): under 50 USD.
+
+Mechanical components — PVC pipe, fittings, solenoid valves, peristaltic fertilizer pump, stepper motor, mounting hardware: approximately 15–20 USD additional.
+
+Full system total: 50–70 USD, under 200 GEL.
+
+Entry-level commercial smart irrigation controllers start at approximately 100 USD for the controller alone, without sensors, valves, or installation. Smart Flow 2.0 covers all of those at a lower total cost.

@@ -1,0 +1,11 @@
+The Relay Module STM32F103C8T6 runs at 8 MHz using the internal RC oscillator with no PLL:
+
+No precise timing is required on this module. Its only job is to receive a command and set a GPIO pin.
+
+All output pins are initialized LOW at startup. The initialization explicitly writes each pin LOW before the GPIO mode is configured:
+
+GPIO pins PA0–PA9, PA12, PA15, and PB3–PB8 are configured as push-pull outputs at low speed. This covers all relay channels and the two stepper motor direction pins.
+
+Command decoding runs in HAL_UART_RxCpltCallback on USART3. Bytes accumulate in rx_buffer until a newline arrives, then the buffer is matched with strstr() against each known command string. After each match, rx_index is reset and rx_buffer is cleared with memset(). Interrupt reception is re-armed with HAL_UART_Receive_IT() at the end of the callback.
+
+Stepper movement is handled in the main while(1) loop rather than the ISR. The ISR only sets the increase or decrease boolean flags. The main loop checks these flags and executes the step pulse with a 100 ms HAL_Delay(), then clears the flag and increments or decrements the position counter. This keeps the delay out of the interrupt context.

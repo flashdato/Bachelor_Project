@@ -1,0 +1,5 @@
+UART communication between the Sensor Module and Relay Module was tested over 24-hour continuous operation. Commands were sent at the same rate as the normal irrigation sequence: bursts of 2–3 commands followed by multi-second idle periods. No data loss or buffer overflow was observed.
+
+Command turnaround — from the Sensor Module sending a command over USART1 to the relay changing state — was effectively instantaneous at 9600 baud for 6-byte messages (including CR+LF). No acknowledgment is sent from the Relay Module; the Sensor Module relies on timing guarantees rather than handshaking.
+
+USART3 (Sensor Module to serial adapter, simulating ESP32 communication) was tested by sending each supported command string and verifying the correct response. The "999" command consistently returned a correctly formatted sensor data string. All other commands ("801", "S1"–"S4", "E", "R") were accepted and produced the expected state changes.

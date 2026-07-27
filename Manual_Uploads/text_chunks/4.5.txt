@@ -1,0 +1,7 @@
+The weather feature is implemented entirely in the mobile application. It does not send any commands to the hardware.
+
+On a configurable schedule the app queries a weather API for current conditions and a 24-hour forecast at the user's location. The recommendation engine applies simple rules:
+
+- If recent rainfall exceeds a threshold, recommend skipping irrigation. - If forecast temperature is high and no rainfall is expected, recommend adding to - If TDS readings from the hardware are out of range, generate a water quality alert
+
+Recommendations are shown on the Weather screen and sent as push notifications if enabled. They are advisory only — the user makes the final decision.

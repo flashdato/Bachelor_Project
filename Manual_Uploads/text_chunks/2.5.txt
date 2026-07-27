@@ -1,0 +1,13 @@
+Looking at both the commercial market and the academic literature together, a clear gap exists that Smart Flow 2.0 was designed to address.
+
+Commercial products are well-engineered and reliable but expensive, not locally available, and focused on scheduling and weather-based irrigation rather than water quality control. None of the products reviewed include built-in TDS monitoring or closed-loop fertilizer adjustment at any price point realistic for a Georgian smallholder farmer. The cheapest option with meaningful smart features starts at around 100 USD for the controller alone, and a complete working installation runs 400 to 600 USD.
+
+Research prototypes close the cost gap but narrow the feature set significantly. The typical prototype in this space — ESP32 or Arduino, soil moisture sensor, relay output, cloud connectivity — is cheap to build but does not address water quality or fertilizer control. These projects validate the concept of connected low-cost irrigation but do not push the boundaries of what the system actually measures and controls.
+
+The specific combination that Smart Flow 2.0 targets — TDS water quality monitoring, closed-loop fertilizer dosing via a stepper valve, multi-zone solenoid control, and mobile application connectivity — does not appear in research prototypes at this cost point in the literature reviewed. Commercial systems have all of these features in high-end agricultural packages, but at costs an order of magnitude higher.
+
+This is the gap the project sits in. Not a gap in basic IoT irrigation, which has been well explored. A specific gap in low-cost, locally buildable systems that include real water quality sensing and automatic fertilizer adjustment.
+
+Building Smart Flow 2.0 in Georgia also adds a constraint worth stating explicitly. Every component needed to be available in the local market or orderable from common online sources at reasonable shipping cost and time. This ruled out some components that appear in published research using specialized sensors or development boards with limited regional availability. The Bill of Materials in Chapter 5 reflects what was actually purchasable and what it actually costs here in 2026, not prices from a US or European catalog.
+
+The chapters that follow describe how these decisions translated into a working prototype, what was built, how it was tested, and where it fell short of what was originally planned.

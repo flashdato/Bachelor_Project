@@ -1,0 +1,7 @@
+Most of the freshwater on earth is used for agriculture. It accounts for approximately 70 percent of all freshwater usage globally [1]. Much of this water is wasted due to overwatering, runoff, broken pipes, or irrigation that occurs on a schedule regardless of whether the soil needs it or not. In Georgia where Micro or House farming is common [4], this problem is amplified by limited access to automation and unpredictable weather.
+
+I built Smart Flow 2.0 because I wanted to see if a really useful irrigation system could be built out of available parts, not just a demo. Not just a blinking LED box, but a water quality sensor, multi zone solenoid valves, mobile application and all pipes. Most importantly, the whole module for less than 200 GEL.
+
+The short answer is yes, it is possible. The rest of this paper is a longer version of the answer.
+
+Smart Flow 2.0 is a prototype of an automated irrigation system. The hardware consists of two STM32F103C8T6 microcontrollers and an ESP32 Wi-Fi module. It measures the TDS (total dissolved solids) and pH of the irrigation water in real-time, controls four solenoid valves for irrigation zones, and is designed to be connected to an Android mobile application. Live TDS readings are used to automatically adjust the fertilizer concentration, controlled by a stepper-driven valve.

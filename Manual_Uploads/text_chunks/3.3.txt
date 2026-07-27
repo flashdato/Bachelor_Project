@@ -1,0 +1,9 @@
+Three UART connections link the hardware modules:
+
+Sensor Module USART1 → Relay Module USART3: relay commands sent as 3-digit ASCII strings followed by CR+LF. The Sensor Module is the only transmitter on this channel; the Relay Module only receives and acts.
+
+Sensor Module USART3 ↔ ESP32 Serial2 (GPIO16/17): bidirectional. The ESP32 sends command strings to the Sensor Module; the Sensor Module responds with sensor data when polled.
+
+The command protocol on both channels is the same 3-digit ASCII format. A command string of the form "1XX\r\n" turns relay XX on; "0XX\r\n" turns it off. Special commands cover sensor polling ("999\r\n"), starting the irrigation sequence ("801\r\n"), setting zone durations ("S1XXXX\r\n" through "S4XXXX\r\n"), selecting a relay for the next cycle ("RXX\r\n"), setting the TDS target ("EXXXX\r\n"), and adjusting the stepper valve ("M0\r\n" / "M1\r\n").
+
+When the ESP32 sends "999\r\n", the Sensor Module responds with the current TDS and pH values concatenated as a single ASCII string followed by a newline. The ESP32 parses this response and publishes the values to Firebase.

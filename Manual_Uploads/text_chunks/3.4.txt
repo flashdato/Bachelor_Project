@@ -1,0 +1,11 @@
+The Sensor Module reads two parameters using ADC1 [8], [9]:
+
+TDS (Total Dissolved Solids) is measured on ADC Channel 0. The ADC is configured in single-conversion mode with 1.5-cycle sample time [12]. Raw readings are stored in a 30-sample circular buffer. The average voltage is calculated from the buffer, temperature compensation is applied at a fixed reference temperature of 19°C, and the TDS value in parts per million is computed from a third-order polynomial calibrated to the DFRobot TDS probe response [12]:
+
+pH is read on ADC Channel 1 using a 10-sample buffer. Six middle samples are averaged and converted to pH using a linear formula with a calibration offset [13]:
+
+In the current firmware, the pH calculation is present but the output is fixed at 7.0 during the measurement loop. The pH probe signal conditioning was wired and the buffer collection runs correctly; the conversion formula requires a calibrated offset specific to the probe unit used, which was not finalized before testing concluded.
+
+ADC Channel 1 also carries the pressure sensor signal, read with the formula:
+
+The pressure value is calculated in the main loop but is not transmitted or used in any control logic in the current firmware version.

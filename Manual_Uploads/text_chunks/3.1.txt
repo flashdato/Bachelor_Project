@@ -1,0 +1,11 @@
+Smart Flow 2.0 uses a three-layer architecture: local hardware, cloud communication, and mobile application.
+
+The local hardware layer has three main components. The Sensor Module — an STM32F103C8T6 microcontroller — reads TDS and pH from analog probes through its ADC, processes the values, and manages the full irrigation sequence via a timer-driven state machine. It communicates with the ESP32 over USART3 and sends relay commands to the Relay Module over USART1.
+
+The Relay Module — a second STM32F103C8T6 — receives ASCII commands over USART3 and drives the solenoid valves, pumps, and stepper motor through GPIO outputs. It contains no measurement or scheduling logic — it only decodes commands and sets outputs.
+
+The ESP32 acts as the network gateway. It polls the Sensor Module for sensor readings on demand, forwards commands from the cloud to the Sensor Module, and maintains connectivity to the mobile application backend. The ESP32 firmware was in the design phase at the time of testing; inter-module communication between the two STM32 boards was validated independently.
+
+The cloud layer uses Google Firebase Realtime Database. The mobile application reads sensor data and writes user commands to Firebase. The ESP32 reads commands and pushes sensor data on the same database.
+
+The mobile application was developed in React Native for Android. It shows live sensor readings, zone status, manual controls, scheduling, and weather-based watering recommendations.
